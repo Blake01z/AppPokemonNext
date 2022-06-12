@@ -9,6 +9,7 @@ import { Pokemon } from '../../interfaces';
 import {localFavorites} from '../../utils';
 import confetti from 'canvas-confetti';
 import { PokemonListResponse } from '../../interfaces/pokemon-list';
+import { getPokemonInfo } from '../../utils/getPokemonInfo';
 
 interface Props {
     pokemon: Pokemon;
@@ -122,11 +123,9 @@ export const getStaticProps:GetStaticProps = async ({params}) => {
 
     const {name} = params as {name: string}
 
-    const {data} = await pokeApi.get<Pokemon>(`/pokemon/${name}`)
-
     return{
         props:{
-            pokemon: data
+            pokemon: await getPokemonInfo(name)
         }
     }
 }
