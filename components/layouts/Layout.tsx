@@ -3,7 +3,6 @@ import { FC } from "react"
 import Head from "next/head"
 
 import {Navbar} from '../ui'
-import { useRouter } from 'next/router';
 
 interface Props{
   title?: String
